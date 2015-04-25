@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Question.all.map {|x| x.destroy!}
+Answer.all.map {|x| x.destroy!}
+
+10.times do |n|
+  question = Question.create(title: "Title #{n}", content: "I would ask if #{n} is good number?")
+  5.times do |x|
+    question.answers.create(content: "this is my answer #{n+1}")
+  end
+end 
+

@@ -1,0 +1,27 @@
+- content_for :title
+  | Questions
+
+h3 All Questions 
+="We have #{@questions_count} questions and #{@answers_count} answers!"
+br
+=link_to 'Add Question', new_question_path, class: 'button'
+//p Find me in app/views/questions/index.html.erb
+
+table
+  thead
+    tr
+      th Title
+      th Content
+      th Answers
+      th 
+  tbody
+    - @questions.each do |question|
+      tr
+        td 
+          =question.title
+        td 
+          =question.content
+        td 
+          =question.answers.count
+        td 
+          =link_to 'Show', question  

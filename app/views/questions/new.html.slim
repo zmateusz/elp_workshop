@@ -1,0 +1,27 @@
+br
+h3 Add new Question
+= form_for (@question) do |f|
+  - if @question.errors.any?
+    .alert-box.alert.radius style="margin-top: 20px;" data-alert=""
+      - @question.errors.full_messages.each do |message| 
+        li = message
+      end
+      a.close href="#"  &times;
+  end
+  .row
+    .small-6
+      .row
+        .small-6.columns
+          label.right Title
+        .small-6.columns
+          = f.text_field :title
+
+      .row
+        .small-6.columns
+          label.right Content
+        .small-6.columns
+          = f.text_area :content
+          = f.submit 'Save', class: 'button'
+  
+
+

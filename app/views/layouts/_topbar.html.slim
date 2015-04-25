@@ -1,0 +1,14 @@
+nav.top-bar data-topbar="" role="navigation" 
+  ul.title-area
+    li.name
+      h1
+        a href="#"  WorkshopOverflow
+    /! Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+    li.toggle-topbar.menu-icon
+      a href="#" 
+        span Menu
+  section.top-bar-section
+    /! Left Nav Section
+    ul.left
+      li = link_to 'Questions', questions_path
+      li = link_to 'Add new', new_question_path

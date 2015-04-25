@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+
+  get 'answers/create'
+
+  root 'questions#index'
+  
+  # get 'questions/index'
+  # get 'questions/new'
+  # post 'questions' => 'questions/create'
+  # get 'questions/:id' => 'questions#show', as: 'questions_show'
+  resources :questions do
+    resources :answers, only: [:create]
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,22 @@
+br
+h3 = @question.title
+p = @question.content
+
+.row
+  .small-6.columns
+    = form_for ([@question, @answer]) do |f|
+      - if @answer.errors.any?
+        .alert-box.alert.radius style="margin-top: 20px;" data-alert=""
+          - @answer.errors.full_messages.each do |message| 
+            li = message
+          end
+          a.close href="#"  &times;
+      label Answer
+      = f.text_area :content
+      = f.submit 'Add', class: 'button'
+
+| Answers:
+ol
+  - @question.answers.each do |answer|
+    li = answer.content
+end
