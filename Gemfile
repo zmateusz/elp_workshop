@@ -15,6 +15,9 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'foundation-rails'
 gem 'slim'
+gem 'devise'
+gem 'redcarpet'
+gem 'rouge'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

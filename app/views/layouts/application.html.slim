@@ -7,6 +7,7 @@ html lang="en"
     title == content_for?(:title) ? yield(:title) : "elp_workshops"
 
     = stylesheet_link_tag "application"
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tag
 
@@ -14,7 +15,7 @@ html lang="en"
     = render 'layouts/topbar'
 
     .row.valign-middle.container
-      .small-12.columns class="#{controller_name}-#{action_name}"
+      .small-8.columns.small-offset-2 class="#{controller_name}-#{action_name}"
         == yield
 
     = javascript_include_tag "application"

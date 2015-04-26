@@ -1,27 +1,16 @@
 - content_for :title
   | Questions
-
-h3 All Questions 
+br
+h3 
+  | All Questions 
+  small
+    =link_to 'Add Question', new_question_path, class: 'button'
 ="We have #{@questions_count} questions and #{@answers_count} answers!"
 br
-=link_to 'Add Question', new_question_path, class: 'button'
-//p Find me in app/views/questions/index.html.erb
-
-table
-  thead
-    tr
-      th Title
-      th Content
-      th Answers
-      th 
-  tbody
     - @questions.each do |question|
-      tr
-        td 
-          =question.title
-        td 
-          =question.content
-        td 
-          =question.answers.count
-        td 
-          =link_to 'Show', question  
+      .panel
+        =link_to question.title, question  
+        =format_date(question.created_at)
+        br
+        =question.content
+        =question.answers.count

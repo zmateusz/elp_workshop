@@ -1,7 +1,8 @@
 br
-h3 = @question.title
-p = @question.content
-
+.panel
+  h3 = @question.title
+  p = @question.content
+  = MarkdownService.call(@question.content).html_safe
 .row
   .small-6.columns
     = form_for ([@question, @answer]) do |f|
@@ -16,7 +17,9 @@ p = @question.content
       = f.submit 'Add', class: 'button'
 
 | Answers:
-ol
-  - @question.answers.each do |answer|
-    li = answer.content
+- @question.answers.each do |answer|
+  .panel
+    = answer.content
+    br
+    = format_date(answer.created_at)
 end

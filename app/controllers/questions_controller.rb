@@ -1,3 +1,4 @@
+require 'md_serv'
 class QuestionsController < ApplicationController
   def index
     @questions = Question.all
