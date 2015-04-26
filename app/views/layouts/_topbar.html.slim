@@ -9,6 +9,11 @@ nav.top-bar data-topbar="" role="navigation"
         span Menu
   section.top-bar-section
     /! Left Nav Section
+    ul.right
+      - if user_signed_in?
+        li = link_to current_user.email
+        li = link_to 'Sign out', destroy_user_session_path, method: :delete
+      end
     ul.left
       li = link_to 'Questions', questions_path
       li = link_to 'Add new', new_question_path
