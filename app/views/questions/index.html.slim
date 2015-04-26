@@ -16,6 +16,7 @@ br
             =question.answers.count
           .small-10.columns
             =link_to question.title, question
-            =format_date(question.created_at)
             br
-            =question.content 
+            =question.content
+            br 
+            = "asked by: #{question.user.email}, #{format_date(question.created_at)}"

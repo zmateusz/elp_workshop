@@ -2,7 +2,7 @@ br
 .panel
   h3 = @question.title
   p = @question.content
-  = MarkdownService.call(@question.content).html_safe
+  / = MarkdownService.call(@question.content).html_safe
 .row
   .small-6.columns
     = form_for ([@question, @answer]) do |f|
@@ -21,5 +21,5 @@ br
   .panel
     = answer.content
     br
-    = format_date(answer.created_at)
+    = "answered by: #{answer.user.email}, #{format_date(answer.created_at)}"
 end

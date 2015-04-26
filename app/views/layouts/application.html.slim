@@ -16,6 +16,12 @@ html lang="en"
 
     .row.valign-middle.container
       .small-8.columns.small-offset-2 class="#{controller_name}-#{action_name}"
+        - flash.each do |name, msg| 
+          - if msg.is_a?(String) 
+            - css_class = name.to_s == 'notice' ? 'success' : 'alert'
+            .alert-box.radius class=css_class data-alert="" 
+              = content_tag :div, msg
+              a.close href="#"  &times;
         == yield
 
     = javascript_include_tag "application"
