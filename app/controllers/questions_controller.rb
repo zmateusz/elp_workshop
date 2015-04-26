@@ -1,7 +1,7 @@
 require 'md_serv'
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
+    @questions = Question.all.sort_by {|question| question.likes.count}.reverse
     @questions_count = Question.count
     @answers_count = Answer.count
   end
@@ -22,6 +22,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers.sort_by {|answer| answer.likes.count}.reverse
     @answer = Answer.new
   end
 

@@ -16,9 +16,10 @@ User.destroy_all
   user = User.new(email: "mail#{n}@example.com", password: '123123123')
   user.skip_confirmation!
   user.save
-  Question.create(title: "Title #{n}", 
+  question = Question.create(title: "Title #{n}", 
                   content: "I would ask if #{n} is good number?",
                   user_id: user.id)
+  Like.create(likeable: question, user: user)
 end 
 
 user_id = User.pluck(:id)

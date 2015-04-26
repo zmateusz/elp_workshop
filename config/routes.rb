@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'answers/create'
 
   root 'questions#index'
-  
+  post 'likes' => 'likes#create'
+  delete 'likes' => 'likes#delete'
+
   # get 'questions/index'
   # get 'questions/new'
   # post 'questions' => 'questions/create'

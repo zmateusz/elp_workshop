@@ -1,8 +1,16 @@
 br
 .panel
-  h3 = @question.title
-  p = @question.content
-  / = MarkdownService.call(@question.content).html_safe
+  .row
+    .small-1.columns
+      - if Like.liked?(@question, current_user)
+        h3 = link_to '-', likes_path(type: "question", id: @question.id), method: :delete
+      - else
+        h3 = link_to '+', likes_path(type: "question", id: @question.id), method: :post
+      = @question.likes.count
+    .small-11.columns
+      h3 = @question.title
+      p = @question.content
+      / = MarkdownService.call(@question.content).html_safe
 .row
   .small-6.columns
     = form_for ([@question, @answer]) do |f|
@@ -17,9 +25,17 @@ br
       = f.submit 'Add', class: 'button'
 
 | Answers:
-- @question.answers.each do |answer|
+- @answers.each do |answer|
   .panel
-    = answer.content
-    br
-    = "answered by: #{answer.user.email}, #{format_date(answer.created_at)}"
+    .row
+      .small-1.columns
+        - if Like.liked?(answer, current_user)
+          h3 = link_to '-', likes_path(type: "answer", id: answer.id, question_id: @question.id), method: :delete
+        - else
+          h3 = link_to '+', likes_path(type: "answer", id: answer.id), method: :post
+        = answer.likes.count
+      .small-11.columns
+        = answer.content
+        br
+        = "answered by: #{answer.user.email}, #{format_date(answer.created_at)}"
 end

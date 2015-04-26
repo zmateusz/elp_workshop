@@ -10,11 +10,13 @@ br
     - @questions.each do |question|
       .panel
         .row
-          .small-2.columns
-            | Answers:
-            br
+          .small-3.columns
             =question.answers.count
-          .small-10.columns
+            | &nbsp answers
+            br
+            =question.likes.count
+            | &nbsp likes
+          .small-9.columns
             =link_to question.title, question
             br
             =question.content
